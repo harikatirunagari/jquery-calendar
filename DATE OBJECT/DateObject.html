@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="../jquery-3.2.1.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div>
+            <input type="button" value="GO" onclick="AssigningDate()">
+            <table cellpadding = "10" cellspacing = "10" border="5">
+                <thead>
+                    <tr>
+                        <td><span  onclick="makeMove('back')"><img src="../ic_skip_previous_black_24dp_1x.png" alt=""/></span></td>
+                        <td><span id="monthName"></span></td>
+                        <td>
+                            <select  id="selectYear"></select>
+                        </td>
+                        <td><span  onclick="makeMove('front')"><img src="../ic_skip_next_black_24dp_1x.png" alt=""/></span> </td>                       
+                    </tr>
+                </thead>
+                <tbody>                
+                </tbody>            
+            </table>
+        </div>
+        
+        <script>
+            var monthArray = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+            document.getElementById('monthName').innerHTML = monthArray[0];  
+            var selectedmonthIndex;
+            var selectedYear;
+            var selectedMonth;       
+        </script>
+        <script src="makeMove function.js" type="text/javascript"></script>
+        <script src="yearIteration function.js" type="text/javascript"></script>
+        <script src="Days In Month.js" type="text/javascript"></script>
+        <script src="monthOddDays.js" type="text/javascript"></script>
+        <script src="yearOddDays.js" type="text/javascript"></script>
+        <script src="firstdateofEveryMonth.js" type="text/javascript"></script>
+        <script src="DayCalculation.js" type="text/javascript"></script>
+    </body>
+</html>
