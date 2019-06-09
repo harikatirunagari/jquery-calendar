@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <style type="text/css">
+            .mainImageBlock{
+                height : 500px;
+                width : 500px;                
+                margin : 100px auto;
+                background : url("Butterfly.jpg");
+                background-repeat : no-repeat;                
+            }
+            
+            .spritedRectangle{
+                height : 500px;
+                width : 100px;
+                float : left;
+                 
+                background : url("Butterfly.jpg");
+                background-repeat : no-repeat;
+            }
+            
+           .r1{
+                background-position : 0% 42%;
+            }
+            
+            .r2 {
+                background-position : 44% 40%;
+            }
+            
+            .r3 {
+                background-position : 89% 38%;
+            }
+            
+            .r4 {
+                background-position : 134% 43%;
+            }
+            
+            .r5 {
+                background-position : 153% 25%;
+            }
+            
+            
+            .sample {
+                clear : both;
+                height : 100px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="mainImageBlock">
+           
+        </div>
+        <input type="button" value="animateAbove" onclick="animateAbove()"/>
+        <input type="button" value="Animate" onclick="myAnimation()"/>
+            <div class="spritedRectangle r1"></div>
+            <div class="spritedRectangle r2"></div>
+            <div class="spritedRectangle r3"></div>
+            <div class="spritedRectangle r4"></div>
+            <div class="spritedRectangle r5"></div> 
+            <div class="sample">jhghuegujehguerhg</div>
+            <div>rhrhrtjhrtht</div>
+            
+            <script type="text/javascript">
+                function myAnimation(){
+                    var elementsArray = document.getElementsByClassName("spritedRectangle");
+                    
+                    for(var i = 0; i < elementsArray.length; i++){
+                        elementsArray[i].style.border = "2px solid white";
+                    }
+                    
+                    for(var j = 0; j < elementsArray.length; j++){
+                        rotateDiv(j);
+                    }
+                    
+                    function rotateDiv(i){
+                        var degValue = 0;                       
+                        var myInterval = setInterval(function(){
+                            if(degValue == 90){  
+                                //alert("in 90");
+                                
+                                elementsArray[i].style.background = "url('Pigeon.jpg')";
+                                elementsArray[i].style.backgroundPosition = sayPos18(i);                                
+                                degValue += 5;
+                            }
+                            else if(degValue == 180){
+                                //alert("in 180");
+                                //degValue = 0;
+                                elementsArray[i].removeAttribute("style");
+                                elementsArray[i].style.background = "url('Pigeon.jpg')";
+                                elementsArray[i].style.backgroundPosition = sayPos18(i);
+                                clearInterval(myInterval);
+                            }
+                            else{
+                                degValue += 5;
+                            }                            
+                            
+                            var value = degValue + "deg";
+                            //console.log(degValue);
+                            elementsArray[i].style.transform = "rotateY(" + value + ")";
+                            //$(elementsArray[i]).css("transform","rotateY(" + value + ")");
+
+                        },500); 
+                    }
+                    
+                }
+                
+                /* Pigeon.jpg orientation at 0 deg*/
+                function sayPos(i){
+                    switch(i){
+                        case 0 : 
+                            return "18% -13%";
+                        case 1 :
+                            return "36% -24%";
+                        case 2 :
+                            return "54% -14%";
+                        case 3 :
+                            return "73% -14%";
+                        case 4 :
+                            return "91% -11%";
+                    }
+                           
+                }
+                
+                /*Pigeon.jpg orientation at 180deg*/
+                function sayPos18(i){
+                    switch(i){
+                        case 0 :
+                            return "76% 20%";
+                        case 1 :
+                            return "57% 25%";
+                        case 2 :
+                            return "39% 22%";
+                        case 3 :
+                            return "21% 25%";
+                        case 4 :
+                            return "2% 25%";
+                    }
+                }
+                
+                function animateAbove(){
+                    var degValue = 0;
+                    var myInterval = setInterval(function(){
+                        if(degValue === 360){
+                            degValue = 0;
+                            clearInterval(myInterval);
+                        }
+                        degValue = degValue + 5;
+                        var value = degValue + "deg";
+                        document.querySelector(".mainImageBlock").style.transform = "rotateY(" + value + ")";
+                    },1000);
+                }
+            </script>
+    </body>
+</html>
