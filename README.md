@@ -1,5 +1,7 @@
-# jquery-calendar
+## jquery-calendar
 
-# js- Linked Dropdowns
+## js- Linked Dropdowns
 
-# Image Spritting (using background-position)
+## Image Spritting (using background-position)
+
+## jquery Horizontal Scroll
