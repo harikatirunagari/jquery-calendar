@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>show Method</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="../jquery-3.2.1.js" type="text/javascript"></script>
+        <style type="text/css">
+            .block{
+                height : 300px;
+                width : 300px;
+                background : #ccc;
+                display : none;
+            }
+            .welcomBlock,.welcomBlock1{
+                height : 50px;
+                display : none;
+                width : 100%;
+                position : absolute;               
+                color : red;
+                font-size : 25px; 
+                text-align : right;
+            }
+            
+            .welcomBlock1{
+                top : 150px;
+                color : blue;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="button" value="Show" onclick="Show('show')">
+        <input type="button" value="Hide" onclick="Show('hide')">
+        
+        <div class="block">
+            Content is there to see what will be the effect on content
+        </div>
+        
+        <div class="welcomBlock">
+            Welcome to the page...
+        </div>
+        
+        <div class="welcomBlock1">
+            Welcome to the page... 123 Welcome to the page... 123  Welcome to the page... 123 
+            Welcome to the page... 123 Welcome to the page... 123  Welcome to the page... 123 
+            Welcome to the page... 123 Welcome to the page... 123  Welcome to the page... 123 
+        </div>
+        
+        <script type="text/javascript">
+            function Show(op){
+                switch(op){
+                    case 'show':
+                       //$(".block").show(100000);
+                       function showBlock(){
+                           var width = 0;
+                           var height = 0;
+                           var opa = 0;
+                           var a = document.querySelector(".block");
+                           a.style.overflow = "hidden";
+                           a.style.opacity = "0";
+                           a.style.display = "block";
+                           a.style.width = width + "px";
+                           a.style.height = height + "px";
+                           
+                           var widthheightInterval1 = setInterval(function(){
+                               width = width + 30;
+                               height = height + 30;
+                               opa += 0.03;
+                              
+                               a.style.height = height + 'px';
+                               //console.log(a.getAttribute('height'));
+                               a.style.width = width + 'px';                  
+                               a.style.opacity = opa;
+                               
+                               if((height >= 300) && (width >= 300)){
+                                   opa = 1;
+                                   a.style.opacity = "1";
+                                   clearInterval(widthheightInterval1);
+                               }
+                           },1000);      
+                           
+                       }
+                       
+                       showBlock();
+                       break;
+                   case 'hide':
+                       //$(".block").hide(100000);
+                       function hideBlock(){
+                           var width = 300;
+                           var height = 300;
+                           var opa = 1;
+                           $(".block").css("overflow","hidden");
+                           var widthheightInterval = setInterval(function(){
+                               width = width - 10;
+                               height = height - 10;
+                               opa -= 0.03;
+                               $(".block").css({"width" : width + 'px',"height" : height + 'px',"opacity" : opa});
+                               
+                               if((height === 0) && (width === 0)){
+                                   
+                                   $(".block").hide();
+                                   clearInterval(widthheightInterval);
+                               }
+                               
+                           },1000);
+                       }
+                       hideBlock();
+                       break;
+                }
+               
+            }
+            
+           
+           $(document).ready(function(){
+                                
+                var ArrowEffect = setInterval(function(){
+                        $(".welcomBlock").show(1000,function(){                
+                        //$(".block").show();
+                        $(".welcomBlock").hide();
+                    });
+                },1000);
+              
+                var MarqueeEffect = setInterval(function(){
+                        $(".welcomBlock1").show(5000,function(){                
+                        //$(".block").show();
+                        $(".welcomBlock1").hide();
+                    });
+                },5000);
+           });
+           
+           
+            
+        </script>
+    </body>
+</html>
